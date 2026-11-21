@@ -1,0 +1,46 @@
+# Retention Action Catalog Configuration
+# NOTE: All costs and capacities are assumption-based estimates for planning and simulation.
+
+actions:
+  - id: "personalised_service_call"
+    name: "Personalised Service Call"
+    cost: 45.0
+    capacity: 250
+    description: "Direct phone outreach from a personal banker to review relationship terms and address grievances."
+    is_assumption: true
+
+  - id: "fee_waiver"
+    name: "Annual Fee Waiver"
+    cost: 60.0
+    capacity: 500
+    description: "12-month waiver of account maintenance, card fees, and transfer surcharges."
+    is_assumption: true
+
+  - id: "loyalty_reward"
+    name: "Loyalty Cashback & Points"
+    cost: 35.0
+    capacity: 600
+    description: "Targeted cash rewards credit and loyalty points multiplier on debit card spend."
+    is_assumption: true
+
+  - id: "interest_rate_benefit"
+    name: "Preferential Interest Rate Boost"
+    cost: 80.0
+    capacity: 300
+    description: "+0.50% APY bonus on savings deposit balances for high-balance accounts."
+    is_assumption: true
+
+  - id: "special_customer_support"
+    name: "Priority Dedicated Support"
+    cost: 25.0
+    capacity: 400
+    description: "VIP priority queue routing and access to senior resolution specialists."
+    is_assumption: true
+
+  - id: "no_intervention"
+    name: "No Intervention (Control)"
+    cost: 0.0
+    capacity: null
+    description: "Standard organic account servicing with zero incremental retention expenditure."
+    is_assumption: true
+

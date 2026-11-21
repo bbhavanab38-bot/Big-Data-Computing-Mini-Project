@@ -1,0 +1,58 @@
+# Core data manipulation and mathematical analysis
+pandas==3.1.1                # High-performance dataframe operations and data wrangling
+numpy==2.5.4                 # Numerical computing, vectorization, and array math
+
+# Machine learning, pipelines, and evaluation
+scikit-learn==1.9.1          # ML pipelines, cross-validation, calibration, and metrics
+xgboost==3.4.1               # Gradient boosted tree ensemble classifier
+joblib==1.6.0                # Model persistence, artifact serialization, and parallel processing
+
+# Visualization and exploratory data analysis
+matplotlib==3.11.2           # Plot generation and figures export
+seaborn==0.13.2              # Statistical distribution charts and correlation heatmaps
+plotly==7.1.0                # Interactive web-based charts, radar graphs, and risk gauges
+
+# Interactive dashboard
+streamlit==1.66.1            # Multi-page executive intelligence dashboard
+
+# Production APIs and serving
+fastapi==0.163.0             # Modern, asynchronous high-performance REST API (v2)
+uvicorn[standard]==0.54.0    # ASGI server implementation for FastAPI execution
+pydantic==2.14.3             # Data validation and typed schema enforcement using Python type annotations
+python-multipart==0.0.33     # Form and multipart data parsing for batch CSV upload endpoints
+flask==3.1.3                 # Existing lightweight REST API service (v1 legacy)
+httpx==0.28.1                # HTTP client for API testing, health checks, and async requests
+
+# Big Data and distributed analytics
+pyspark==3.5.9               # Apache Spark Python API for distributed ETL and MLlib on YARN
+
+# Notebooks and reporting
+nbformat==5.11.1             # Jupyter notebook data format parser and validation
+jupyter==1.1.1               # Interactive notebook environment for exploratory analysis
+
+# Testing and verification (dev)
+pytest==9.2.0                # Test runner and assertion framework for regression testing
+
+# Explainable AI (XAI)
+shap==0.54.1                 # Model interpretability via Shapley values (LinearExplainer and TreeExplainer)
+
+# Fairness and algorithmic bias audit
+fairlearn==0.15.0            # Group fairness metrics (MetricFrame, demographic parity, equalised odds)
+
+# Persistent storage and campaign database
+sqlalchemy==2.1.8            # SQLAlchemy 2.x ORM and SQL toolkit for SQLite/PostgreSQL campaign storage
+
+# Automated PDF Report Generation
+reportlab==5.1.0             # Pure-Python PDF document generation for executive audit reports
+
+# Code Quality, Coverage & Security Auditing (dev)
+pytest-cov==7.1.0            # Test suite coverage reporting
+ruff==0.17.5                 # Ultra-fast Python linter and formatter
+pip-audit==2.10.1            # Vulnerability scanner for Python dependencies
+
+# Security patched dependencies
+tornado>=6.6.1               # Asynchronous networking library (fixes CVE-2026-126347)
+
+# Build and packaging (enables: pip install -e .)
+setuptools>=61.0             # Packaging build backend for pyproject.toml editable install
+

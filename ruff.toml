@@ -1,0 +1,36 @@
+# Ruff configuration for Banking Retention Intelligence Platform
+target-version = "py312"
+line-length = 120
+
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "env",
+    "__pycache__",
+    "mlruns",
+    "build",
+    "dist",
+]
+
+[lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # Pyflakes
+    "W",   # pycodestyle warnings
+]
+ignore = [
+    "E501",  # line length (handled by human discretion & visual wrap)
+    "E402",  # module level import not at top of file (needed for sys.path manipulation in scripts/apps)
+    "E702",  # multiple statements on one line (semicolons in legacy exploratory scripts)
+    "W291",  # trailing whitespace
+    "W293",  # blank line contains whitespace
+    "F841",  # local variable assigned but never used (common in data pipelines and notebooks)
+]
+
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["F401", "F841"]
+"spark/*" = ["F401", "F841"]
+"dashboard/app.py" = ["F401", "F841"]
+"dashboard/core/__init__.py" = ["F401"]

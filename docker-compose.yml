@@ -1,0 +1,91 @@
+services:
+  # ----------------------------------------------------------------------------
+  # FastAPI Prediction & Risk Evaluation Microservice
+  # ----------------------------------------------------------------------------
+  api:
+    build:
+      context: .
+      target: api
+    image: banking-retention-api:latest
+    container_name: retention-api
+    ports:
+      - "8000:8000"
+    environment:
+      - API_KEY=${API_KEY:-}
+      - MAX_BATCH_ROWS=${MAX_BATCH_ROWS:-5000}
+      - MAX_BATCH_BYTES=${MAX_BATCH_BYTES:-5242880}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost:8501,http://127.0.0.1:8501}
+      - DATABASE_URL=${DATABASE_URL:-sqlite:////app/data/campaigns/retention_campaigns.db}
+    volumes:
+      - ./models:/app/models:ro
+      - ./data:/app/data
+      - sqlite-data:/app/data/campaigns
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ----------------------------------------------------------------------------
+  # Streamlit Executive Retention Dashboard UI
+  # ----------------------------------------------------------------------------
+  ui:
+    build:
+      context: .
+      target: ui
+    image: banking-retention-ui:latest
+    container_name: retention-ui
+    ports:
+      - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      - API_KEY=${API_KEY:-}
+      - RETENTION_API_URL=http://api:8000
+      - DATABASE_URL=${DATABASE_URL:-sqlite:////app/data/campaigns/retention_campaigns.db}
+      - DECISION_THRESHOLD=${DECISION_THRESHOLD:-0.35}
+      - RISK_THRESHOLD_LOW=${RISK_THRESHOLD_LOW:-0.20}
+      - RISK_THRESHOLD_HIGH=${RISK_THRESHOLD_HIGH:-0.50}
+    volumes:
+      - ./models:/app/models:ro
+      - ./data:/app/data
+      - sqlite-data:/app/data/campaigns
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ----------------------------------------------------------------------------
+  # Optional PostgreSQL Storage Backend (activate via --profile postgres)
+  # ----------------------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: retention-postgres
+    profiles:
+      - postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-retention_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-retention_pass}
+      - POSTGRES_DB=${POSTGRES_DB:-retention_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-retention_user} -d ${POSTGRES_DB:-retention_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  sqlite-data:
+    driver: local
+  postgres-data:
+    driver: local

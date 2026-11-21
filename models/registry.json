@@ -1,0 +1,41 @@
+{
+  "current_version": "v_20261121_045648_0fda16e",
+  "models": {
+    "v_20261115_075230_4402616": {
+      "name": "Calibrated Logistic Regression",
+      "model_version": "v_20261115_075230_4402616",
+      "trained_at": "2026-11-15T07:52:30.683341+00:00",
+      "sklearn_version": "1.9.1",
+      "calibration_method": "sigmoid",
+      "training_data_hash": "ec3a5530457b",
+      "metrics": {
+        "Accuracy": 0.8445,
+        "Precision": 0.6545454545454545,
+        "Recall": 0.10975609756097561,
+        "F1 Score": 0.18798955613577023,
+        "ROC-AUC": 0.729490022172949,
+        "PR-AUC": 0.3866327143775254,
+        "Brier": 0.12157079509509043
+      },
+      "file_name": "best_model.pkl"
+    },
+    "v_20261121_045648_0fda16e": {
+      "name": "Calibrated Logistic Regression",
+      "model_version": "v_20261121_045648_0fda16e",
+      "trained_at": "2026-11-21T04:56:48.952650+00:00",
+      "sklearn_version": "1.9.1",
+      "calibration_method": "sigmoid",
+      "training_data_hash": "ec3a5530457b",
+      "metrics": {
+        "Accuracy": 0.8445,
+        "Precision": 0.6545454545454545,
+        "Recall": 0.10975609756097561,
+        "F1 Score": 0.18798955613577023,
+        "ROC-AUC": 0.729490022172949,
+        "PR-AUC": 0.3866327143775254,
+        "Brier": 0.12157079509509043
+      },
+      "file_name": "best_model.pkl"
+    }
+  }
+}

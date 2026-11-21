@@ -1,0 +1,7 @@
+Geography,Gender,Customers,AvgBalance,AvgCreditScore,AvgTransactions,ChurnRatePct
+Germany,Female,1211,66518.63,644.6,24.8,27.25
+Germany,Male,1243,67534.22,648.6,25.0,22.45
+Spain,Female,1234,66155.57,649.5,25.1,14.34
+France,Female,2537,66805.05,649.9,25.0,13.87
+Spain,Male,1319,64544.21,650.5,24.8,13.8
+France,Male,2456,67506.66,649.9,25.2,13.11

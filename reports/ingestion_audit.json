@@ -1,0 +1,19 @@
+{
+  "source": "unit_test_batch",
+  "ingested_at": "2026-11-21T05:07:14.004297+00:00",
+  "total_received": 4,
+  "valid_count": 2,
+  "quarantined_count": 2,
+  "duplicates_removed": 1,
+  "quarantine_file": "/Users/vikas/Desktop/BDT/data/quarantine/corrupted_records.csv",
+  "data_columns": [
+    "CustomerId",
+    "CreditScore",
+    "Age",
+    "Balance",
+    "EstimatedSalary",
+    "Geography",
+    "Gender",
+    "Exited"
+  ]
+}
